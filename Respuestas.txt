@@ -1,0 +1,24 @@
+Integrantes:
+Diesel Augusto Aponte Quispe
+Frank Li Figueroa Rodriguez
+
+•	¿Cómo el patrón Factory facilita añadir el nuevo canal de voz?
+El patrón de diseño Factory permite incorporar nuevos canales como el de voz, ya que facilita la creación de nuevas clases en el momento que 
+lo deseemos sin necesidad de cambiar las implementaciones existentes. Únicamente se necesita una clase para el canal de voz y otra para la 
+fábrica correspondiente. La fábrica, como su nombre indica, será la encargada de crear la correspondiente notificación y, desde el sistema
+maestra, sólo habrá que realizar el registro de la nueva fábrica. El código se mantiene limpio y no será necesario realizar cambios en la 
+lógica maestra, sino que la lógica de registro permitirá encontrar la fábrica correcta. El patrón es abierto para extensiones y cerrado a 
+las modificaciones.
+•	¿Qué cambios mínimos se necesitan para añadir WhatsApp?
+Para poder agregar WhatsApp como nuevo canal, tendríamos que hacer cambios mínimos y muy parecidos, pero manteniendo la misma estructura.
+En primer lugar, crearíamos la clase de WhatsAppNotificacion que implemente la manera de enviar el mensaje. A continuación, definiríamos
+su respectiva fábrica, la de WhatsAppNotificacionFactory, para construir esas notificaciones. Finalmente, lo único que tenemos que hacer
+es registrar esta fábrica en el Notificador con una sola línea de código. De esta forma, el sistema automáticamente reconoce la nueva 
+canalización de mensajería sin que se altere el funcionamiento del resto. Todo queda encapsulado y ordenado.
+•	¿Cómo manejaríamos notificaciones que combinan múltiples canales?
+Cuando se requiere enviar notificaciones a través de varios canales al mismo tiempo, existen dos alternativas. La primera alternativa es 
+el patrón Composite, que nos permite distribuir varias notificaciones en un único objeto que integra las notificaciones» acordes en un solo 
+objeto compuesto. Este objeto compuesto tiene un método enviar que ejecuta todas las notificaciones para incluirlas en todo en un único expedido.
+Es flexible, cuando permite que cada notificación tenga su propio mensaje. La alternativa sencilla sería incluir un método adicional que reciba
+una lista de canales y envía el mismo mensaje en todos. Es más sencillo, pero menos versátil. La elección es sencilla en base a si necesita mensajes
+idénticos o no.
